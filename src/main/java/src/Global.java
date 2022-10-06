@@ -10,6 +10,7 @@ public class Global {
     public static final String GET_TURCKS = "/trucks";
 
     public static final String GET_SCORE = "/score";
+    public static final String PUT_SIMULATE = "/simulate";
     public static final String X_AUTH_TOKEN = "9c3355168ff38001e92e48f63ef1fe4d";
 
     public static boolean checkResponse(String responseCode){

@@ -28,7 +28,7 @@ public class JSONParser {
 
     public ArrayList<Truck> getTrucks(JSONObject responseJson) {
         ArrayList<Truck> trucks = new ArrayList<>();
-        System.out.println(responseJson);
+
         try{
             JSONArray trucksArray = responseJson.getJSONArray("trucks");
             for(int i = 0; i < trucksArray.length(); i++){
@@ -54,5 +54,26 @@ public class JSONParser {
             e.printStackTrace();
         }
         return -1;
+    }
+
+    public JSONArray getCommandsJSONArray(ArrayList<Command> commandArrayList){
+        JSONArray commandArray = new JSONArray();
+        for(Command command : commandArrayList){
+            commandArray.put(command.getJsonCommandDate());
+        }
+        return commandArray;
+    }
+
+    public Simulate putSimulation(JSONObject responseJson){
+        Simulate newSimulate = new Simulate();
+        try{
+            newSimulate.setStatus(responseJson.getString("status"));
+            newSimulate.setTime(responseJson.getInt("time"));
+            newSimulate.setTotalDistance(responseJson.getString("distance"));
+            newSimulate.setFailRequest(responseJson.getInt("failed_requests_count"));
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
+        return newSimulate;
     }
 }
