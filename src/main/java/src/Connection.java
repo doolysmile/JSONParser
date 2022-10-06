@@ -52,4 +52,85 @@ public class Connection {
         }
         return response;
     }
+
+    public JSONObject locations() {
+        HttpURLConnection conn = null;
+        JSONObject responseJson = null;
+        try{
+            URL url = new URL(Global.BASE_RUL + Global.GET_LOCATIONS);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty(connAuth, TokenManager.getInstance().getToken());
+            conn.setRequestProperty(connType, connJson);
+
+            int responseCode = conn.getResponseCode();
+            if(Global.checkResponse(String.valueOf(responseCode))){
+                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder sb = new StringBuilder();
+                String line = "";
+                while ((line = br.readLine()) != null){
+                    sb.append(line);
+                }
+                responseJson = new JSONObject(sb.toString());
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return responseJson;
+    }
+
+    public JSONObject trucks() {
+        HttpURLConnection conn = null;
+        JSONObject responseJson = null;
+        try{
+            URL url = new URL(Global.BASE_RUL + Global.GET_TURCKS);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty(connAuth, TokenManager.getInstance().getToken());
+            conn.setRequestProperty(connType, connJson);
+
+            int responseCode = conn.getResponseCode();
+            if(Global.checkResponse(String.valueOf(responseCode))){
+                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder sb = new StringBuilder();
+                String line = "";
+                while ((line = br.readLine()) != null){
+                    sb.append(line);
+                }
+                responseJson = new JSONObject(sb.toString());
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return responseJson;
+    }
+
+    public JSONObject score() {
+        HttpURLConnection conn = null;
+        JSONObject responseJson = null;
+        try{
+            URL url = new URL(Global.BASE_RUL + Global.GET_SCORE);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty(connAuth, TokenManager.getInstance().getToken());
+            conn.setRequestProperty(connType, connJson);
+
+            int responseCode = conn.getResponseCode();
+            if(Global.checkResponse(String.valueOf(responseCode))){
+                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder sb = new StringBuilder();
+                String line = "";
+                while ((line = br.readLine()) != null){
+                    sb.append(line);
+                }
+                responseJson = new JSONObject(sb.toString());
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return responseJson;
+    }
 }

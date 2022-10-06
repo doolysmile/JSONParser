@@ -22,17 +22,13 @@ public class TokenManager {
         String token = null;
         String response = Connection.getInstance().start(problemId);
 
-        if(response.equals("400")){
-            System.out.println("400 :: parameter Err ");
-        } else if (response.equals("401")) {
-            System.out.println("401 :: X-auth-token Err");
-        } else if (response.equals("500")) {
-            System.out.println("500 :: server err");
-        } else {
+
+        if(Global.checkResponse(response)){
             saveTokenFile(response);
             token = response;
             response = "200";
         }
+
         this.token = token;
         return response;
     }
