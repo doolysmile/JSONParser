@@ -1,6 +1,7 @@
-package src;
+package src.util;
 
 import org.json.JSONObject;
+import src.Global;
 
 import java.io.BufferedReader;
 import java.io.IOException;
