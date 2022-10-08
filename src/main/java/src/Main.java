@@ -52,6 +52,6 @@ public class Main {
 
     private static ArrayList<UserInfo> userInfos(){
         System.out.println("===== User info =====");
-        
+
     }
 }
